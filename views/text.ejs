@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Keyword Search</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+     <style>
+
+       body {
+         background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
+       }
+
+.button {
+  border: none;
+  color: #92D050;
+  padding: 16px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: Transparent; 
+  color:black ; 
+  border: 2px solid black;
+}
+
+.button1:hover {
+  background-color: black;
+  color: #92D050;
+  background-attachment: fixed;
+}
+.button2 {
+  background-color: transparent; 
+  color:black ; 
+  border: 2px solid black;
+  background-attachment: fixed;
+}
+
+.button2:hover {
+  background-color: black;
+  color: #92D050;
+}
+
+.mainbanner {
+  position: absolute;
+  top: 10px;
+  margin-left: 530px;
+  margin-right: auto;
+  margin-top: 100px;
+  position: fixed;
+}
+
+.wrapper{
+  margin-top: 100px;
+  max-width: 450px;
+  margin: 10px auto;
+}
+
+.yes {
+  border: 2px solid #A9D18E;
+  font-family: sans-seris;
+  margin: 150px;
+  padding: 20px;
+  position: absolute;
+  bottom: 0px;
+  top:200px;
+  z-index:-1;
+  background-color:black;
+  height: 300px;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #A9D18E;
+}
+h2 {
+  text-align: center;
+  color: #A9D18E;
+}
+
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+  color: #A9D18E;
+}
+
+a {
+  text-decoration: none;
+  color: #A9D18E;
+}
+
+</style>
+</head>
+<body>
+  <div class="mainbanner">
+  
+    <div class="wrapper">
+      <button class="button button1" onclick="crops()">Custom Crops</button>
+      <button class="button button2" onclick="schemes()">Custom Schemes</button>
+      <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        
+        <form action="/home" method="post">
+          <input type="text" id="keyword" name="keyword" placeholder="Enter Keywords...">
+          <div class="autocom-box">
+            <!-- here list are inserted from javascript -->
+            </div>
+          <button class="icon"><i class="fas fa-search"></i></button>
+          <!-- <div class="icon"><i class="fas fa-search"></i></div> -->
+        </form>
+      </div>
+      </div>
+    </div>
+    <div class="yes">
+      <h1><%= topic %></h1>
+      <h2><%= subtopic %></h2>
+      <p><%= text %></p>
+    </div>
+  </div>
+    <script src="script.js"></script>
+    <script src="suggestions.js"></script>
+
+  </body>
+</html>

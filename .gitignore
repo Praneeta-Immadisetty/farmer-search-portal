@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+# reference files
+stylesheets_reference.txt
+
+# navbar
+/website-menu-02

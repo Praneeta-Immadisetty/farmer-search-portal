@@ -1,0 +1,176 @@
+body {
+  background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
+}
+
+.u-section-1 {
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 829px;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 27px auto 0;
+}
+
+.u-section-1 .u-list-1 {
+  margin-top: 0;
+  margin-bottom: 60px;
+}
+
+.u-section-1 .u-repeater-1 {
+  min-height: 606px;
+  grid-template-columns: calc(50% - 17.5px) calc(50% - 17.5px);
+  grid-gap: 35px 35px;
+  grid-auto-columns: calc(50% - 17.5px);
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 10px 0;
+}
+
+.u-section-1 .u-group-1 {
+  width: 325px;
+  background-image: none;
+  min-height: 545px;
+  height: auto;
+  margin: 0 104px 0 auto;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 5px 0;
+}
+
+.u-section-1 .u-text-2 {
+  font-size: 6rem;
+  width: 97px;
+  margin: 28px auto 0;
+}
+
+.u-section-1 .u-image-1 {
+  width: 239px;
+  height: 239px;
+  background-position: 50% 50%;
+  margin: 11px auto 0;
+}
+
+.u-section-1 .u-text-3 {
+  font-size: 1.5rem;
+  width: 224px;
+  margin: 7px auto 0;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: none none solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: normal;
+  margin: 71px auto 0;
+  padding: 0;
+}
+
+.u-section-1 .u-container-layout-3 {
+  padding: 10px 0;
+}
+
+.u-section-1 .u-group-2 {
+  width: 325px;
+  background-image: none;
+  min-height: 545px;
+  height: auto;
+  margin: 0 104px 0 auto;
+}
+
+.u-section-1 .u-container-layout-4 {
+  padding: 5px 0;
+}
+
+.u-section-1 .u-text-4 {
+  font-size: 6rem;
+  width: 97px;
+  margin: 28px auto 0;
+}
+
+.u-section-1 .u-image-2 {
+  width: 239px;
+  height: 239px;
+  background-position: 50% 50%;
+  margin: 11px auto 0;
+}
+
+.u-section-1 .u-text-5 {
+  font-size: 1.5rem;
+  width: 224px;
+  margin: 7px auto 0;
+}
+
+.u-section-1 .u-btn-2 {
+  border-style: none none solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: normal;
+  margin: 71px auto 0;
+  padding: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 684px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    min-height: 500px;
+    grid-template-columns: calc(33.3333% - 23.3333px) calc(33.3333% - 23.3333px) calc(33.3333% - 23.3333px);
+  }
+
+  .u-section-1 .u-group-1 {
+    height: auto;
+  }
+
+  .u-section-1 .u-group-2 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-top: -330px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 524px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: calc(50% - 17.5px) calc(50% - 17.5px);
+    grid-auto-columns: calc(100% - 0px);
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 393px;
+  }
+
+  .u-section-1 .u-repeater-1 {
+    grid-template-columns: 100%;
+    grid-auto-columns: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 247px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-right: 15px;
+  }
+
+  .u-section-1 .u-group-2 {
+    margin-right: 15px;
+  }
+}

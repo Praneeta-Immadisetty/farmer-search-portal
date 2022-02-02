@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="font-style.css">
+
+    <link rel="stylesheet" href="nav-owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/nav-bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/nav-style.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <style>
+
+body {
+  background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
+}
+.button {
+  border: none;
+  color: #92D050;
+  padding: 16px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: Transparent; 
+  color:black ; 
+  border: 2px solid black;
+}
+
+.button1:hover {
+  background-color: black;
+  color: #92D050;
+  background-attachment: fixed;
+}
+.button2 {
+  background-color: transparent; 
+  color:black ; 
+  border: 2px solid black;
+  background-attachment: fixed;
+}
+
+.button2:hover {
+  background-color: black;
+  color: #92D050;
+}
+.yes {
+  border: 2px solid #A9D18E;
+  font-family: sans-seris;
+  margin: 150px;
+  padding: 20px;
+  position: absolute;
+  bottom: 0px;
+  top:100px;
+  z-index:-1;
+  background-color:black;
+  height: 300px;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #A9D18E;
+}
+h2 {
+  text-align: center;
+  color: #A9D18E;
+}
+
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+   color: #A9D18E;
+}
+
+a {
+  text-decoration: none;
+  color: #A9D18E;
+}
+
+</style>
+  </head>
+  <body>
+    <header class="site-navbar site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center position-relative">
+
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="#" class="font-weight-bold"><img src="favicon.png" width="80" height="80">Farmer Portal</a>
+            </div>
+          </div>
+
+          <div class="col-9  text-right">
+            
+
+            <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+
+
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                <li class="active"><a href="http://localhost:3000/home" class="nav-link">Home</a></li>
+                <li><a href="http://localhost:3000/crops" class="nav-link">Custom Crop Suggestions</a></li>
+                <li><a href="http://localhost:3000/schemes" class="nav-link">Custom Scheme Suggestions</a></li>
+                <li><a href="http://localhost:3000/stats" class="nav-link">Alerts</a></li>
+                <li><a href="#" class="nav-link">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          
+        </div>
+      </div>
+
+    </header>
+  <div class="mainbanner">
+  
+    <div class="wrapper">
+      <button class="button button1" onclick="crops()">Custom Crops</button>
+      <button class="button button2" onclick="schemes()">Custom Schemes</button>
+      <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        <form action="/home" method="post">
+          <input type="text" id="keyword" name="keyword" placeholder="Enter Keywords...">
+          <div class="autocom-box">
+            <!-- here list are inserted from javascript -->
+          </div>
+          <button class="icon"><i class="fas fa-search"></i></button>
+          <!-- <div class="icon"><i class="fas fa-search"></i></div> -->
+        
+        </form>
+      </div>
+    </div>
+  </div>
+    <script src="script.js"></script>
+    <script src="suggestions.js"></script>
+
+  </body>
+</html>
