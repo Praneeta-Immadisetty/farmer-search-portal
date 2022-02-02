@@ -104,9 +104,16 @@ app.post("/register", function (req, res) {
             maximum = result[0].FID;
             console.log("max value of FID set " + maximum);
 
-            con.query("Insert into "+"farmer"+" (FID, Name, PhoneNumber, Age, EmailID, Gender, Line1, Pincode, Password) VALUES ('"+(maximum+1)+"','"+req.body.full_name+"','"+req.body.phone+"', '"+req.body.Age+"','"+req.body.your_email+"','"+req.body.Gender+"','"+req.body.Address+"','"+req.body.zip+"', '"+req.body.Password+"')",function(err, result){
+            con.query("Insert into "+"farmer"+" (FID, Name, PhoneNumber, Age, EmailID, Gender, Line1, Pincode, Password, DoB) VALUES ('"+(maximum+1)+"','"+req.body.full_name+"','"+req.body.phone+"','"+0+"','"+req.body.your_email+"','"+req.body.Gender+"','"+req.body.Address+"','"+req.body.zip+"', '"+req.body.Password+"', '"+req.body.DoB+"')",function(err, result){
                 if (err) throw err;
                 console.log("1 record inserted into farmer");
+            });
+
+            con.query("update farmer set Age = FLOOR(DATEDIFF(CURDATE(), DoB)/365.25) where fid ="+"'"+(maximum+1)+"'", function(err, result){
+                if (err) throw err;
+                a = result[0];
+                console.log("age " + a);
+                console.log(result);
             });
 
             con.query("Insert into "+"pin_details"+" (Pincode, State, City) VALUES ('"+req.body.zip+"','"+req.body.State+"','"+req.body.district+"')",function(err, result){
