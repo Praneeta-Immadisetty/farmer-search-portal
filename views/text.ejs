@@ -100,24 +100,23 @@ a {
 
 </style>
 </head>
-<body>
-  <div class="mainbanner">
-  
-    <div class="wrapper">
-      <button class="button button1" onclick="crops()">Custom Crops</button>
-      <button class="button button2" onclick="schemes()">Custom Schemes</button>
-      <div class="search-input">
-        <a href="" target="_blank" hidden></a>
+  <body>
+    <div class="mainbanner">
+      <div class="wrapper">
+        <button class="button button1" onclick="crops()">Custom Crops</button>
+        <button class="button button2" onclick="schemes()">Custom Schemes</button>
+        <div class="search-input">
+          <a href="" target="_blank" hidden></a>
         
-        <form action="/home" method="post">
-          <input type="text" id="keyword" name="keyword" placeholder="Enter Keywords...">
-          <div class="autocom-box">
-            <!-- here list are inserted from javascript -->
+          <form action="/home" method="post">
+            <input type="text" id="keyword" name="keyword" placeholder="Enter Keywords...">
+            <div class="autocom-box">
+              <!-- here list are inserted from javascript -->
             </div>
-          <button class="icon"><i class="fas fa-search"></i></button>
-          <!-- <div class="icon"><i class="fas fa-search"></i></div> -->
-        </form>
-      </div>
+            <button class="icon"><i class="fas fa-search"></i></button>
+            <!-- <div class="icon"><i class="fas fa-search"></i></div> -->
+          </form>
+        </div>
       </div>
     </div>
     <div class="yes">
@@ -125,7 +124,6 @@ a {
       <h2><%= subtopic %></h2>
       <p><%= text %></p>
     </div>
-  </div>
     <script src="script.js"></script>
     <script src="suggestions.js"></script>
 
