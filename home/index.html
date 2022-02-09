@@ -22,6 +22,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".notification_icon .fa-bell").click(function(){
+          $(".dropdown").toggleClass("active");
+        })
+      });
+    </script>
     <df-messenger
       intent="WELCOME"
       chat-title="farmer-portal"
@@ -111,6 +120,106 @@ a {
   text-decoration: none;
   color: #A9D18E;
 }
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+.notification_wrap{
+	width: 300px;
+  position: absolute;
+  right: 1000px;
+  top: -40px;
+	margin: 50px auto 0;
+}
+
+.notification_wrap .notification_icon{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	font-size: 70px;
+	margin: 0 auto;
+	text-align: center;
+	color: transparent;
+}
+
+.notification_wrap .notification_icon:hover{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	font-size: 70px;
+	margin: 0 auto;
+	text-align: center;
+	color: transparent;
+}
+
+.notification_wrap .notification_icon .fa-bell{
+	cursor: pointer;
+}
+
+.notification_wrap .dropdown{
+	width: 220px;
+	height: 310px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.125);
+	margin: 50px auto 0;
+	padding: 15px;
+	position: relative;
+	display: none;
+}
+
+.notification_wrap .dropdown .notify_item{
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #dbdaff;
+}
+
+.notification_wrap .dropdown .notify_item:last-child{
+	border-bottom: 0px;
+}
+
+.notification_wrap .dropdown .notify_item .notify_img{
+	margin-right: 15px;
+}
+
+.notification_wrap .dropdown .notify_item .notify_info p{
+	margin-bottom: 5px;
+  margin-left: -50px;
+  color: #479b3d;
+}
+
+.notification_wrap .dropdown .notify_item .notify_info p span{
+	color: #605dff;
+	margin-left: 5px;
+}
+
+.notification_wrap .dropdown .notify_item .notify_info .notify_time{
+	color: #000;
+  opacity: 0.8;
+	font-size: 12px;
+}
+
+.notification_wrap .dropdown:before{
+	content: "";
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 15px solid;
+	border-color: transparent transparent #fff transparent;
+}
+
+.notification_wrap .dropdown.active{
+	display: block;
+}
+
 
 </style>
   </head>
@@ -164,6 +273,51 @@ a {
           <!-- <div class="icon"><i class="fas fa-search"></i></div> -->
         
         </form>
+      </div>
+    </div>
+  </div>
+  <div class="notif-wrapper">
+    <div class="notification_wrap">
+      <div class="notification_icon">
+        <i class="fas fa-bell"></i>
+      </div>
+      <div class="dropdown">
+        <div class="notify_item">
+          <!-- <div class="notify_img">
+            <img src="images/not_1.png" alt="profile_pic" style="width: 50px">
+          </div> -->
+          <div class="notify_info">
+            <p>Notification 1</p>
+            <span class="notify_time">6 hours ago</span>
+          </div>
+        </div>
+        <div class="notify_item">
+          <!-- <div class="notify_img">
+            <img src="images/not_2.png" alt="profile_pic" style="width: 50px">
+          </div> -->
+          <div class="notify_info">
+            <p>Notification 2</p>
+            <span class="notify_time">6 hours ago</span>
+          </div>
+        </div>
+        <div class="notify_item">
+          <!-- <div class="notify_img">
+            <img src="images/not_3.png" alt="profile_pic" style="width: 50px">
+          </div> -->
+          <div class="notify_info">
+            <p>Notification 3</p>
+            <span class="notify_time">6 hours ago</span>
+          </div>
+        </div>
+        <div class="notify_item">
+          <!-- <div class="notify_img">
+            <img src="images/not_4.png" alt="profile_pic" style="width: 50px">
+          </div> -->
+          <div class="notify_info">
+            <p>Notification 4</p>
+            <span class="notify_time">6 hours ago</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
