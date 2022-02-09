@@ -7,6 +7,8 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+const fs = require('fs');
+
 const port = 3000;
 
 const mongoose = require('mongoose');
@@ -22,7 +24,7 @@ const TextSchema = new mongoose.Schema ({
 const Text = mongoose.model("Text", TextSchema);
 
 var mysql = require('mysql');
-
+ 
 var con = mysql.createConnection({
     host: "localhost",
     // user: "prani",
@@ -239,6 +241,26 @@ app.get("/aboutscheme5", function (req, res) {
 });
 
 app.get("/stats", function (req, res){
+    var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
+    con.connect(function(err) {
+        con.query("SELECT CropName, count(*) AS Count FROM land_cropname WHERE LID in (SELECT LID FROM land, farmer WHERE land.FID = farmer.FID) GROUP BY CropName",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = 'var crops = [';
+            fs.open(path+'pie-chart.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        buffer = buffer + '[' + "'" + ele.CropName + "', " + String(ele.Count) + '],';
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
     res.render('stats');
 });
 
