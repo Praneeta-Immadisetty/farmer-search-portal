@@ -28,8 +28,8 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
     host: "localhost",
     // user: "prani",
-    user: "pooj",
-    //user: "root",
+    // user: "pooj",
+    user: "root",
     password: "abc123",
     database: "schema"
 });
