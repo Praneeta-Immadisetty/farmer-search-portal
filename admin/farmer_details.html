@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="User Analytics">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="font-style.css" />
+
+    <link rel="stylesheet" href="nav-owl.carousel.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/nav-bootstrap.min.css" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/nav-style.css" />
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="css/admin-nicepage.css" media="screen">
+    <link rel="stylesheet" href="css/admin-Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.4.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <style>
+      body {
+          background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
+      }
+
+      .bold-green-font {
+        font-weight: bold;
+        color: green;
+      }
+
+      .bold-font {
+        font-weight: bold;
+      }
+
+      .right-text {
+        text-align: right;
+      }
+
+      .large-font {
+        font-size: 15px;
+      }
+
+      .darkblue-font {
+        /* font-style: italic; */
+        color: darkblue;
+      }
+
+      .italic-purple-font {
+        font-style: italic;
+        color: purple;
+      }
+
+      .underline-blue-font {
+        text-decoration: underline;
+        color: blue;
+      }
+
+      .gold-border {
+        border: 3px solid gold;
+      }
+
+      .deeppink-border {
+        border: 3px solid deeppink;
+      }
+
+      .orange-background {
+        background-color: orange;
+      }
+
+      .orchid-background {
+        background-color: orchid;
+      }
+
+      .beige-background {
+        background-color: beige;
+      }
+    </style>
+    <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+  <script type="text/javascript" 
+      src="table.js">
+  </script>
+  <script type="text/javascript">
+    google.charts.load("current", { packages: ["table"] });
+  </script>
+  </head>
+  <body class="u-body u-xl-mode">
+    <header class="site-navbar site-navbar-target" role="banner">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="#" class="font-weight-bold"
+                ><img src="favicon.png" width="80" height="80" />Farmer
+                Portal</a
+              >
+            </div>
+          </div>
+
+          <div class="col-9 text-right">
+            <span class="d-inline-block d-lg-none"
+              ><a
+                href="#"
+                class="text-primary site-menu-toggle js-menu-toggle py-5"
+                ><span class="icon-menu h3 text-white"></span></a
+            ></span>
+
+            <nav
+              class="site-navigation text-right ml-auto d-none d-lg-block"
+              role="navigation"
+            >
+              <ul class="site-menu main-menu js-clone-nav ml-auto">
+                <li>
+                  <a href="http://localhost:3000/home" class="nav-link">Home</a>
+                </li>
+                <li  class="active">
+                  <a href="http://localhost:3000/adminUserDetails" class="nav-link"
+                    >User Details</a
+                  >
+                </li>
+                <li>
+                  <a href="http://localhost:3000/schemes" class="nav-link"
+                    >Custom Scheme Suggestions</a
+                  >
+                </li>
+                <li><a href="#" class="nav-link">Alerts</a></li>
+                <li><a href="http://localhost:3000/" class="nav-link">Logout</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="u-align-center u-clearfix u-image u-section-1" id="sec-a1ef" data-image-width="1600" data-image-height="1106">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-text u-text-default u-text-1">User Details</h1>
+        <div id = "container" style = "width: 1000px; height: 500px; margin: 30px auto">
+        </div>
+        <script language = "JavaScript">
+            function drawChartTable() {
+              var cssClassNames = {
+                'headerRow': '', 
+                // darkblue-font large-font bold-font
+                'tableRow': '',
+                'oddTableRow': '',
+                'selectedTableRow': '',
+                'hoverTableRow': '',
+                'headerCell': '',
+                'tableCell': '',
+                'rowNumberCell': ''};
+              // Define the chart to be drawn.
+              let tableRows = []
+              tableRows = userData;
+              console.log(tableRows);
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Name');
+              data.addColumn('string', 'PhoneNo');
+              data.addColumn('string', 'EmailID');
+              data.addColumn('string', 'City');
+              data.addColumn('string', 'State');
+              data.addRows(tableRows);
+  
+              var options = {
+                  showRowNumber: true,
+                  width: '100%', 
+                  height: '100%',
+                  'cssClassNames': cssClassNames
+              };
+                    
+              // Instantiate and draw the chart.
+              var chart = new google.visualization.Table(document.getElementById('container'));
+              chart.draw(data, options);
+            }
+            google.charts.setOnLoadCallback(drawChartTable);
+        </script>
+      </div>
+    </section>
+  </body>
+</html>

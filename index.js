@@ -24,11 +24,13 @@ const TextSchema = new mongoose.Schema ({
 const Text = mongoose.model("Text", TextSchema);
 
 var mysql = require('mysql');
+var favicon = require('serve-favicon');
+var path = require('path');
  
 var con = mysql.createConnection({
     host: "localhost",
-    // user: "prani",
-    user: "pooj",
+    user: "prani",
+    // user: "pooj",
     //user: "root",
     password: "abc123",
     database: "schema"
@@ -59,11 +61,17 @@ const translate = require('translate-google');
 
 let alert = require('alert'); 
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.get("/", function (req, res) {
 	res.sendFile(__dirname + "/login/login.html");
 });
 
 app.post("/", function(req, res) {
+    if(req.body.email=="admin@gmail.com" && req.body.pwd=="abc123"){
+        res.redirect("/admin");
+    }
+    else {
     con.connect(function(err){
         con.query("SELECT FID,Password FROM farmer WHERE " + "'"+req.body.email+"'= farmer.EmailID", function (err, result, fields) {
             if (err) throw err;
@@ -89,6 +97,7 @@ app.post("/", function(req, res) {
             }
         });
     });
+    }
 });
 
 app.get("/register", function (req, res) {
@@ -240,28 +249,102 @@ app.get("/aboutscheme5", function (req, res) {
 	res.sendFile(__dirname + "/schemedets/about5.html");
 });
 
-app.get("/stats", function (req, res){
+app.get("/admin", function (req, res){
     var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
-    // con.connect(function(err) {
-    //     con.query("SELECT CropName, count(*) AS Count FROM land_cropname WHERE LID in (SELECT LID FROM land, farmer WHERE land.FID = farmer.FID) GROUP BY CropName",function(err, result){
-    //         if (err) throw err;
-    //         console.log(result);
-    //         let buffer = 'var crops = [';
-    //         fs.open(path+'pie-chart.js', 'w+', function(err, fd){
-    //             if (err) console.log('cant open file');
-    //             else {
-    //                 result.forEach(function(ele){
-    //                     buffer = buffer + '[' + "'" + ele.CropName + "', " + String(ele.Count) + '],';
-    //                 });
-    //                 buffer += '];'
-    //                 fs.write(fd, buffer, function (err, bytes) {
-    //                     if (err) console.log(err);
-    //                     else console.log("written");
-    //             });}
-    //         });
-    //     });
-    // });
-    res.sendFile(__dirname + "/admin/Home.html");
+    con.connect(function(err) {
+        con.query("SELECT CropName, count(*) AS Count FROM land_cropname WHERE LID in (SELECT LID FROM land, farmer WHERE land.FID = farmer.FID) GROUP BY CropName",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = 'var crops = [';
+            fs.open(path+'pie-chart.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        buffer = buffer + '[' + "'" + ele.CropName + "', " + String(ele.Count) + '],';
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
+    con.connect(function(err) {
+        con.query("SELECT State, CropName, COUNT(*) AS cropNo FROM pin_details INNER JOIN farmer ON pin_details.Pincode = farmer.Pincode INNER JOIN land ON land.FID =  farmer.FID INNER JOIN land_cropname ON land.LID = land_cropname.LID GROUP BY State, CropName ORDER BY State, CropName;",function(err, result){
+            if (err) throw err;
+            console.log("result");
+            console.log(result);
+            var crops = ["Cotton", "Sunflower", "Paddy", "Ragi", "GroundNut", "Jowar", "Bajra", "Maize"];
+            var andhra = {}, telangana = {}, andhralist = [], tellist = [];
+            let buffer = "var cropsStatewise = [['CropType', ";
+            fs.open(path+'column-chart.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    crops.forEach(function(ele){
+                        buffer = buffer + "'" + ele + "', ";
+                    });
+                    result.forEach(function(ele){
+                        if(ele.State=="Andhra Pradesh")
+                            andhra[ele.CropName] = ele.cropNo;
+                    });
+                    crops.forEach(function(ele){
+                        var val = andhra[ele] === undefined ? 0 : andhra[ele];
+                        andhralist.push(val);
+                    });
+                    result.forEach(function(ele){
+                        if(ele.State=="Telangana")
+                            telangana[ele.CropName] = ele.cropNo;
+                    });
+                    crops.forEach(function(ele){
+                        var val = telangana[ele] === undefined ? 0 : telangana[ele];
+                        tellist.push(val);
+                    });
+                    console.log("andhra");
+                    console.log(andhra, andhralist, telangana, tellist);
+                    // console.log(andhralist);
+                    buffer += "{ role: 'annotation' } ]," + '[' + "'Andhra Pradesh', ";
+                    andhralist.forEach(function(ele){
+                        buffer = buffer + String(ele) +", ";
+                    });
+                    // buffer += "'']];"
+                    buffer += "''], ['Telangana', ";
+                    tellist.forEach(function(ele){
+                        buffer = buffer + String(ele) +", ";
+                    });
+                    buffer += "'']];"
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written-cropstate");
+                });}
+            });
+        });
+    });
+    res.sendFile(__dirname + "/admin/admin_analytics.html");
+});
+
+app.get("/adminUserDetails", function (req, res){
+    var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
+    con.connect(function(err) {
+        con.query("SELECT Name, PhoneNumber, EmailID, City, State FROM farmer, pin_details WHERE farmer.Pincode = pin_details.Pincode",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = 'var userData = [';
+            fs.open(path+'table.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        buffer = buffer + '[' + "'" + ele.Name + "', '" + String(ele.PhoneNumber) + "', '" + ele.EmailID + "', '" + ele.City + "', '" + ele.State + "'],";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
+    res.sendFile(__dirname + "/admin/farmer_details.html");
 });
 
 app.listen(port, function() {
