@@ -29,9 +29,9 @@ var path = require('path');
  
 var con = mysql.createConnection({
     host: "localhost",
-    user: "prani",
+    // user: "prani",
     // user: "pooj",
-    // user: "root",
+    user: "root",
     password: "abc123",
     database: "schema"
 });
@@ -159,7 +159,16 @@ app.post("/register", function (req, res) {
 });
 
 app.get("/home", function (req, res) {
-	res.sendFile(__dirname + "/home/index.html");
+	//res.sendFile(__dirname + "/home/index.html");
+    con.connect(function(err) {
+        con.query("SELECT Subject,Content from notifs",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            const notifs = result;
+            //res.render('index', {notif1: result[0].Content, notif2: result[1].Content, sub1: result[0].Subject, sub2: result[1].Subject});
+            res.render('index',{ notifs});
+        });
+    });
 });
 
 app.post("/home", function (req, res) {
@@ -375,6 +384,9 @@ app.get("/adminUserDetails", function (req, res){
 app.get("/alerts", function (req, res){
     res.sendFile(__dirname + "/admin/send-alert.html");
 });
+
+
+
 
 // app.get("/keywords", function (req, res){
 //     var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';

@@ -107,6 +107,7 @@ h1 {
 }
 h2 {
   text-align: center;
+  font-size: 15px;
   color: #A9D18E;
 }
 
@@ -283,43 +284,15 @@ a {
         <i class="fas fa-bell"></i>
       </div>
       <div class="dropdown">
-        <div class="notify_item">
-          <!-- <div class="notify_img">
-            <img src="images/not_1.png" alt="profile_pic" style="width: 50px">
-          </div> -->
-          <div class="notify_info">
-            <p>Notification 1</p>
-            <span class="notify_time">6 hours ago</span>
+        <% for (var i = 0; i < notifs.length; i ++) { %>
+          <div class="notify_item">
+            <div class="notify_info">
+              <h2> <b><%= notifs[i].Subject %></b></h2>
+              <h3 class = "notify_time"><%= notifs[i].Content %></h3>
+            </div>
           </div>
-        </div>
-        <div class="notify_item">
-          <!-- <div class="notify_img">
-            <img src="images/not_2.png" alt="profile_pic" style="width: 50px">
-          </div> -->
-          <div class="notify_info">
-            <p>Subject</p>
-            <p>Notification Contents</p>
-            <span class="notify_time">6 hours ago</span>
-          </div>
-        </div>
-        <div class="notify_item">
-          <!-- <div class="notify_img">
-            <img src="images/not_3.png" alt="profile_pic" style="width: 50px">
-          </div> -->
-          <!-- <div class="notify_info">
-            <p>Notification 3</p>
-            <span class="notify_time">6 hours ago</span>
-          </div>
-        </div>
-        <div class="notify_item"> -->
-          <!-- <div class="notify_img">
-            <img src="images/not_4.png" alt="profile_pic" style="width: 50px">
-          </div> -->
-          <!-- <div class="notify_info">
-            <p>Notification 4</p>
-            <span class="notify_time">6 hours ago</span>
-          </div>
-        </div> -->
+         <% } %>
+        
       </div>
     </div>
   </div>
