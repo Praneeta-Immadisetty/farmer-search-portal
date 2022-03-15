@@ -29,9 +29,9 @@ var path = require('path');
  
 var con = mysql.createConnection({
     host: "localhost",
-    // user: "prani",
+    user: "prani",
     // user: "pooj",
-    user: "root",
+    // user: "root",
     password: "abc123",
     database: "schema"
 });
