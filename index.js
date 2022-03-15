@@ -164,6 +164,12 @@ app.get("/home", function (req, res) {
 
 app.post("/home", function (req, res) {
     const keyword = req.body.keyword;
+    con.connect(function(err) {
+        con.query("UPDATE keyword_freq SET freq=freq+1 WHERE keyword_freq.keyword="+"'"+keyword+"'",function(err, result){
+            if (err) throw err;
+            console.log(result);
+        });
+    });
     Text.find({keywords: keyword}, function (err, docs) {
         if (err){
             console.log(err);
@@ -320,6 +326,25 @@ app.get("/admin", function (req, res){
             });
         });
     });
+    con.connect(function(err) {
+        con.query("SELECT * FROM keyword_freq",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = 'var keyWord = [';
+            fs.open(path+'keyword.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        buffer = buffer + '{ x: ' + "'" + ele.keyword + "', value: '" + String(ele.freq) + "', category: '" + ele.topic + "' }, ";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
     res.sendFile(__dirname + "/admin/admin_analytics.html");
 });
 
@@ -345,6 +370,31 @@ app.get("/adminUserDetails", function (req, res){
         });
     });
     res.sendFile(__dirname + "/admin/farmer_details.html");
+});
+
+app.get("/keywords", function (req, res){
+    var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
+    con.connect(function(err) {
+        con.query("SELECT * FROM keyword_freq",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = 'var keyWord = [';
+            fs.open(path+'keyword.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    // { x: "Organic", value: 109, category: "Organic Farming" },
+                    result.forEach(function(ele){
+                        buffer = buffer + '{ x: ' + "'" + ele.keyword + "', value: '" + String(ele.freq) + "', category: '" + ele.topic + "' }, ";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
+    res.sendFile(__dirname + "/admin/wordcloud.html");
 });
 
 app.listen(port, function() {
