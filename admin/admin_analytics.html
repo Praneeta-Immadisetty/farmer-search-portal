@@ -86,6 +86,9 @@
   <script type="text/javascript" 
       src="keyword.js">
   </script>
+  <script type="text/javascript" 
+      src="map.js">
+  </script>
   <script type="text/javascript">
     google.charts.load("current", {packages:['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawChartBar);
@@ -110,13 +113,15 @@
 
 			function drawChartMap() {
             // Define the chart to be drawn.
-            var dataMap = google.visualization.arrayToDataTable([
-               ['Lat', 'Long', 'Name'],
-               [37.4232, -122.0853, 'Work'],
-               [37.4289, -122.1697, 'University'],
-               [37.6153, -122.3900, 'Airport'],
-               [37.4422, -122.1731, 'Shopping']
-            ]);
+            var mapData = map;
+            // var dataMap = google.visualization.arrayToDataTable([
+            //    ['Lat', 'Long', 'Name'],
+            //    [37.4232, -122.0853, 'Work'],
+            //    [37.4289, -122.1697, 'University'],
+            //    [37.6153, -122.3900, 'Airport'],
+            //    [37.4422, -122.1731, 'Shopping']
+            // ]);
+            var dataMap = google.visualization.arrayToDataTable(map);
               
             // Set chart options
             var optionsMap = {showTip: true};				

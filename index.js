@@ -279,8 +279,6 @@ app.get("/admin", function (req, res){
     con.connect(function(err) {
         con.query("SELECT State, CropName, COUNT(*) AS cropNo FROM pin_details INNER JOIN farmer ON pin_details.Pincode = farmer.Pincode INNER JOIN land ON land.FID =  farmer.FID INNER JOIN land_cropname ON land.LID = land_cropname.LID GROUP BY State, CropName ORDER BY State, CropName;",function(err, result){
             if (err) throw err;
-            console.log("result");
-            console.log(result);
             var crops = ["Cotton", "Sunflower", "Paddy", "Ragi", "GroundNut", "Jowar", "Bajra", "Maize"];
             var andhra = {}, telangana = {}, andhralist = [], tellist = [];
             let buffer = "var cropsStatewise = [['CropType', ";
@@ -306,14 +304,10 @@ app.get("/admin", function (req, res){
                         var val = telangana[ele] === undefined ? 0 : telangana[ele];
                         tellist.push(val);
                     });
-                    console.log("andhra");
-                    console.log(andhra, andhralist, telangana, tellist);
-                    // console.log(andhralist);
                     buffer += "{ role: 'annotation' } ]," + '[' + "'Andhra Pradesh', ";
                     andhralist.forEach(function(ele){
                         buffer = buffer + String(ele) +", ";
                     });
-                    // buffer += "'']];"
                     buffer += "''], ['Telangana', ";
                     tellist.forEach(function(ele){
                         buffer = buffer + String(ele) +", ";
@@ -327,9 +321,28 @@ app.get("/admin", function (req, res){
         });
     });
     con.connect(function(err) {
-        con.query("SELECT * FROM keyword_freq",function(err, result){
+        con.query("SELECT  map.Lat, map.Long, map.City, group_concat(crop.Name) as 'Crops' from crop_location, map, crop where Clocation = City and CIDL=CID group by map.City order by map.City",function(err, result){
             if (err) throw err;
             console.log(result);
+            let buffer = "var map = [['Lat', 'Long', 'Name'],";
+            fs.open(path+'map.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        // [37.4232, -122.0853, 'Work'],
+                        buffer = buffer + '[' + ele.Lat + ", " + ele.Long + ", '" + ele.City + " - " + ele.Crops + "'], ";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
+    con.connect(function(err) {
+        con.query("SELECT * FROM keyword_freq",function(err, result){
+            if (err) throw err;
             let buffer = 'var keyWord = [';
             fs.open(path+'keyword.js', 'w+', function(err, fd){
                 if (err) console.log('cant open file');
