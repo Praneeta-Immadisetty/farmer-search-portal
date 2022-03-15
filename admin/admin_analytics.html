@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="User Analytics">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="font-style.css" />
+
+    <link rel="stylesheet" href="nav-owl.carousel.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/nav-bootstrap.min.css" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/nav-style.css" />
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="css/admin-nicepage.css" media="screen">
+    <link rel="stylesheet" href="css/admin-Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.4.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <style>
+      body {
+         background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
+       }
+    </style>
+    <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+  <script type="text/javascript" 
+      src="pie-chart.js">
+  </script>
+  <script type="text/javascript">
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      let rows = [];
+      rows = crops;
+      console.log("hi");
+      console.log(rows);
+      var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Crop');
+        data.addColumn('number', 'Number of Farmers');
+        data.addRows(rows);
+
+      var options = {
+        title: "Farmer crop freq",
+        width: "689px",
+        height: "445px",
+      };
+
+      var chart = new google.visualization.PieChart(
+        document.getElementById("piechart")
+      );
+
+      chart.draw(data, options);
+    }
+  </script>
+  <script type="text/javascript" src="column-chart.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawChartBar);
+    function drawChartBar() {
+      let rows = [];
+      rows = cropsStatewise;
+      console.log(rows);
+      var data = google.visualization.arrayToDataTable(rows);
+      var options = {
+        title: "Crops State-Andhra",
+        width: "689px",
+        height: "445px",
+        legend: { position: 'top', maxLines: 3 },
+        // bar: { groupWidth: '75%' },
+        isStacked: true,
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart"));
+      chart.draw(data, options);
+  }
+  </script>
+  </head>
+  <body class="u-body u-xl-mode">
+    <header class="site-navbar site-navbar-target" role="banner">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="#" class="font-weight-bold"
+                ><img src="favicon.png" width="80" height="80" />Farmer
+                Portal</a
+              >
+            </div>
+          </div>
+
+          <div class="col-9 text-right">
+            <span class="d-inline-block d-lg-none"
+              ><a
+                href="#"
+                class="text-primary site-menu-toggle js-menu-toggle py-5"
+                ><span class="icon-menu h3 text-white"></span></a
+            ></span>
+
+            <nav
+              class="site-navigation text-right ml-auto d-none d-lg-block"
+              role="navigation"
+            >
+              <ul class="site-menu main-menu js-clone-nav ml-auto">
+                <li class="active">
+                  <a href="http://localhost:3000/home" class="nav-link">Home</a>
+                </li>
+                <li>
+                  <a href="http://localhost:3000/adminUserDetails" class="nav-link"
+                    >User Details</a
+                  >
+                </li>
+                <li>
+                  <a href="http://localhost:3000/schemes" class="nav-link"
+                    >Custom Scheme Suggestions</a
+                  >
+                </li>
+                <li><a href="http://localhost:3000/alerts" class="nav-link">Alerts</a></li>
+                <li><a href="http://localhost:3000/" class="nav-link">Logout</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="u-align-center u-clearfix u-image u-section-1" id="sec-a1ef" data-image-width="1600" data-image-height="1106">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-text u-text-default u-text-1">User Analytics</h1>
+        <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img id="piechart" class="d-block w-100" src="" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img id="columnchart" class="d-block w-100" src="" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div> -->
+        <div class="pointer-event u-carousel u-expanded-width-xs u-gallery u-layout-thumbnails u-lightbox u-no-transition u-show-text-always u-gallery-1" id="carousel-5226" data-interval="5000" data-u-ride="carousel">
+          <div class="u-carousel-inner u-gallery-inner" role="listbox">
+            <div id="columnchart" class="u-active u-carousel-item u-gallery-item u-carousel-item-1">
+              <div class="u-back-slide" data-image-width="1280" data-image-height="854">
+                <img class="u-back-image u-expanded" src="">
+              </div>
+              <div class="u-align-center u-over-slide u-over-slide-1">
+                <h3 class="u-gallery-heading">Sample Title</h3>
+                <p class="u-gallery-text">Sample Text</p>
+              </div>
+            </div>
+            <div id="piechart" class="u-carousel-item u-gallery-item u-carousel-item-2">
+              <div class="u-back-slide" data-image-width="1280" data-image-height="854">
+                <img class="u-back-image u-expanded" src="">
+              </div>
+              <div class="u-align-center u-over-slide u-over-slide-2">
+                <h3 class="u-gallery-heading">Sample Title</h3>
+                <p class="u-gallery-text">Sample Text</p>
+              </div>
+            </div>
+            <div class="u-carousel-item u-gallery-item u-carousel-item-3" data-image-width="2836" data-image-height="1875" style="width: 100%;">
+              <div class="u-back-slide" data-image-width="1280" data-image-height="880">
+                <img class="u-back-image u-expanded" src="images-ref/2cb9e5d40ab59bc4e578acb6f0035b3c3bcc3ca47ff609a0258639a8e5e66df7bd1a2b82fe86bbdb9e3e548e4775c53d8909646098a8286339cb39_1280.jpg">
+              </div>
+              <div class="u-align-center u-over-slide u-over-slide-3">
+                <h3 class="u-gallery-heading">Sample Title</h3>
+                <p class="u-gallery-text">Sample Text</p>
+              </div>
+              <style data-mode="XL" data-visited="true"></style>
+              <style data-mode="LG"></style>
+              <style data-mode="MD"></style>
+              <style data-mode="SM"></style>
+              <style data-mode="XS"></style>
+            </div>
+          </div>
+          <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-5226" role="button" data-u-slide="prev">
+            <span aria-hidden="true">
+              <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+            </span>
+            <span class="sr-only">
+              <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+            </span>
+          </a>
+          <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-5226" role="button" data-u-slide="next">
+            <span aria-hidden="true">
+              <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+            </span>
+            <span class="sr-only">
+              <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+            </span>
+          </a>
+          <ol class="u-carousel-thumbnails u-spacing-10">
+            <li class="u-active u-carousel-thumbnail u-carousel-thumbnail-1" data-u-target="#carousel-5226" data-u-slide-to="0">
+              <img class="u-carousel-thumbnail-image u-image" src="images-ref/pie.jpg">
+            </li>
+            <li class="u-carousel-thumbnail u-carousel-thumbnail-2" data-u-target="#carousel-5226" data-u-slide-to="1">
+              <img class="u-carousel-thumbnail-image u-image" src="images-ref/column.jpg">
+            </li>
+            <li class="u-carousel-thumbnail u-carousel-thumbnail-3" data-u-target="#carousel-5226" data-u-slide-to="2">
+              <img class="u-carousel-thumbnail-image u-image" src="https://pixabay.com/get/gcf7d8f6a822cb9e5d40ab59bc4e578acb6f0035b3c3bcc3ca47ff609a0258639a8e5e66df7bd1a2b82fe86bbdb9e3e548e4775c53d8909646098a8286339cb39_1280.jpg">
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
