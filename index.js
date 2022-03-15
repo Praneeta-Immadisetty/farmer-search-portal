@@ -39,6 +39,8 @@ var con = mysql.createConnection({
 var currentfid;
 var maximum;
 var maximumland;
+var sno;
+
 
 const nodemailer = require("nodemailer");
 
@@ -106,6 +108,7 @@ app.get("/register", function (req, res) {
 
 app.post("/register", function (req, res) {
     console.log(req.body);
+
 
     con.connect(function(err) {
         if (err) throw err;
@@ -397,6 +400,29 @@ app.get("/adminUserDetails", function (req, res){
 app.get("/alerts", function (req, res){
     res.sendFile(__dirname + "/admin/send-alert.html");
 });
+
+app.post("/alerts", function (req, res) {
+    console.log(req.body);
+    con.connect(function(err) {
+        con.query("select SNo from notifs where SNo = (SELECT MAX(SNo) from notifs)", function(err, result){
+            if (err) throw err;
+            sno = result[0].SNo;
+            
+            con.query("Insert into "+"notifs"+"(SNo, Subject, Content) VALUES ('"+(sno+1)+"','"+req.body.subject+"','"+req.body.message+"')",function(err, result){
+                if (err) throw err;
+                alert("Successfully Sent Notification!");
+                console.log("1 record inserted into notifs");
+            });
+        });
+        
+        // con.query("INSERT into notifs(SNo, Subject, Content) VALUES("+(sno+1)+",'"+req.body.subject+"','"+req.body.message+"')",function(err, result){
+        //     if (err) throw err;
+        //     console.log(result);
+           
+        // });
+    });
+});
+
 
 
 
