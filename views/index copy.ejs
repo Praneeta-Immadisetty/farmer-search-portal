@@ -40,185 +40,186 @@
       language-code="en"
     ></df-messenger>
     <style>
-      df-messenger {
-      --df-messenger-bot-message: #878fac;
-      --df-messenger-button-titlebar-color: #42e72f;
-      --df-messenger-chat-background-color: rgb(212, 255, 173);
-      --df-messenger-font-color: white;
-      --df-messenger-send-icon: #878fac;
-      --df-messenger-user-message: #42e72f;
-      }
-    body {
-      background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
-    }
-    .button {
-      border: none;
-      color: #92D050;
-      padding: 16px 42px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-    }
+  df-messenger {
+   --df-messenger-bot-message: #878fac;
+   --df-messenger-button-titlebar-color: #42e72f;
+   --df-messenger-chat-background-color: rgb(212, 255, 173);
+   --df-messenger-font-color: white;
+   --df-messenger-send-icon: #878fac;
+   --df-messenger-user-message: #42e72f;
+  }
 
-    .button1 {
-      background-color: Transparent; 
-      color:black ; 
-      border: 2px solid black;
-    }
+body {
+  background-image: url('ramkumar-radhakrishnan-wikimedia-1622193304.jpeg');
+}
+.button {
+  border: none;
+  color: #92D050;
+  padding: 16px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 
-    .button1:hover {
-      background-color: black;
-      color: #92D050;
-      background-attachment: fixed;
-    }
-    .button2 {
-      background-color: transparent; 
-      color:black ; 
-      border: 2px solid black;
-      background-attachment: fixed;
-    }
+.button1 {
+  background-color: Transparent; 
+  color:black ; 
+  border: 2px solid black;
+}
 
-    .button2:hover {
-      background-color: black;
-      color: #92D050;
-    }
-    .yes {
-      border: 2px solid #A9D18E;
-      font-family: sans-seris;
-      margin: 150px;
-      padding: 20px;
-      position: absolute;
-      bottom: 0px;
-      top:100px;
-      z-index:-1;
-      background-color:black;
-      height: 300px;
-    }
+.button1:hover {
+  background-color: black;
+  color: #92D050;
+  background-attachment: fixed;
+}
+.button2 {
+  background-color: transparent; 
+  color:black ; 
+  border: 2px solid black;
+  background-attachment: fixed;
+}
 
-    h1 {
-      text-align: center;
-      text-transform: uppercase;
-      color: #A9D18E;
-    }
-    h2 {
-      text-align: center;
-      color: #A9D18E;
-    }
+.button2:hover {
+  background-color: black;
+  color: #92D050;
+}
+.yes {
+  border: 2px solid #A9D18E;
+  font-family: sans-seris;
+  margin: 150px;
+  padding: 20px;
+  position: absolute;
+  bottom: 0px;
+  top:100px;
+  z-index:-1;
+  background-color:black;
+  height: 300px;
+}
 
-    p {
-      text-indent: 50px;
-      text-align: justify;
-      letter-spacing: 3px;
-      color: #A9D18E;
-    }
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #A9D18E;
+}
+h2 {
+  text-align: center;
+  color: #A9D18E;
+}
 
-    a {
-      text-decoration: none;
-      color: #A9D18E;
-    }
-    @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+   color: #A9D18E;
+}
 
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
+a {
+  text-decoration: none;
+  color: #A9D18E;
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
 
 
-    .notification_wrap{
-      width: 300px;
-      position: absolute;
-      right: 1000px;
-      top: -40px;
-      margin: 50px auto 0;
-    }
+.notification_wrap{
+	width: 300px;
+  position: absolute;
+  right: 1000px;
+  top: -40px;
+	margin: 50px auto 0;
+}
 
-    .notification_wrap .notification_icon{
-      position: relative;
-      width: 50px;
-      height: 50px;
-      font-size: 70px;
-      margin: 0 auto;
-      text-align: center;
-      color: transparent;
-    }
+.notification_wrap .notification_icon{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	font-size: 70px;
+	margin: 0 auto;
+	text-align: center;
+	color: transparent;
+}
 
-    .notification_wrap .notification_icon:hover{
-      position: relative;
-      width: 50px;
-      height: 50px;
-      font-size: 70px;
-      margin: 0 auto;
-      text-align: center;
-      color: transparent;
-    }
+.notification_wrap .notification_icon:hover{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	font-size: 70px;
+	margin: 0 auto;
+	text-align: center;
+	color: transparent;
+}
 
-    .notification_wrap .notification_icon .fa-bell{
-      cursor: pointer;
-    }
+.notification_wrap .notification_icon .fa-bell{
+	cursor: pointer;
+}
 
-    .notification_wrap .dropdown{
-      width: 220px;
-      height: 310px;
-      background: #fff;
-      border-radius: 5px;
-      box-shadow: 2px 2px 3px rgba(0,0,0,0.125);
-      margin: 50px auto 0;
-      padding: 15px;
-      position: relative;
-      display: none;
-    }
+.notification_wrap .dropdown{
+	width: 220px;
+	height: 310px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.125);
+	margin: 50px auto 0;
+	padding: 15px;
+	position: relative;
+	display: none;
+}
 
-    .notification_wrap .dropdown .notify_item{
-      display: flex;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #dbdaff;
-    }
+.notification_wrap .dropdown .notify_item{
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #dbdaff;
+}
 
-    .notification_wrap .dropdown .notify_item:last-child{
-      border-bottom: 0px;
-    }
+.notification_wrap .dropdown .notify_item:last-child{
+	border-bottom: 0px;
+}
 
-    .notification_wrap .dropdown .notify_item .notify_img{
-      margin-right: 15px;
-    }
+.notification_wrap .dropdown .notify_item .notify_img{
+	margin-right: 15px;
+}
 
-    .notification_wrap .dropdown .notify_item .notify_info p{
-      margin-bottom: 5px;
-      margin-left: -50px;
-      color: #479b3d;
-    }
+.notification_wrap .dropdown .notify_item .notify_info p{
+	margin-bottom: 5px;
+  margin-left: -50px;
+  color: #479b3d;
+}
 
-    .notification_wrap .dropdown .notify_item .notify_info p span{
-      color: #605dff;
-      margin-left: 5px;
-    }
+.notification_wrap .dropdown .notify_item .notify_info p span{
+	color: #605dff;
+	margin-left: 5px;
+}
 
-    .notification_wrap .dropdown .notify_item .notify_info .notify_time{
-      color: #000;
-      opacity: 0.8;
-      font-size: 12px;
-    }
+.notification_wrap .dropdown .notify_item .notify_info .notify_time{
+	color: #000;
+  opacity: 0.8;
+	font-size: 12px;
+}
 
-    .notification_wrap .dropdown:before{
-      content: "";
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 15px solid;
-      border-color: transparent transparent #fff transparent;
-    }
+.notification_wrap .dropdown:before{
+	content: "";
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 15px solid;
+	border-color: transparent transparent #fff transparent;
+}
 
-    .notification_wrap .dropdown.active{
-      display: block;
-    }
+.notification_wrap .dropdown.active{
+	display: block;
+}
 
 
 </style>
@@ -282,26 +283,27 @@
         <i class="fas fa-bell"></i>
       </div>
       <div class="dropdown">
-        <div class="notify_item">
-          <!-- <div class="notify_img">
-            <img src="images/not_1.png" alt="profile_pic" style="width: 50px">
-          </div> -->
+        <% for (var i = 0; i < notifs.length; i ++) { %>
+          <div class="notify_item">
+            <div class="notify_info">
+              <h3 class = "notify_time"><%= notifs[i].Subject %></h3>
+              <p class = "notify_time"><%= notifs[i].Content %></p>
+            </div>
+          </div>
+         <% } %>
+        <!-- <div class="notify_item">
           <div class="notify_info">
-            <p>Notification 1</p>
-            <span class="notify_time">6 hours ago</span>
+            <h3 class = "notify_time"><%= sub1 %></h3>
+            <p class = "notify_time"><%= notif1 %></p>
           </div>
         </div>
         <div class="notify_item">
-          <!-- <div class="notify_img">
-            <img src="images/not_2.png" alt="profile_pic" style="width: 50px">
-          </div> -->
           <div class="notify_info">
-            <p>Subject</p>
-            <p>Notification Contents</p>
-            <span class="notify_time">6 hours ago</span>
+            <h3 class = "notify_time"><%= sub2 %></h3>
+            <p class = "notify_time"><%= notif2 %></p>
           </div>
         </div>
-        <div class="notify_item">
+        <div class="notify_item"> -->
           <!-- <div class="notify_img">
             <img src="images/not_3.png" alt="profile_pic" style="width: 50px">
           </div> -->

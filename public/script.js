@@ -61,3 +61,9 @@ function crops(element){
 function schemes(element){
     window.location.href='http://localhost:3000/schemes';
 }
+
+// $("submit").submit(function(){
+//         alert("Submitted");
+
+
+// });

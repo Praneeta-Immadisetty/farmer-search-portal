@@ -39,6 +39,8 @@ var con = mysql.createConnection({
 var currentfid;
 var maximum;
 var maximumland;
+var sno;
+
 
 const nodemailer = require("nodemailer");
 
@@ -107,6 +109,7 @@ app.get("/register", function (req, res) {
 app.post("/register", function (req, res) {
     console.log(req.body);
 
+
     con.connect(function(err) {
         if (err) throw err;
         console.log("Connected!");
@@ -159,7 +162,16 @@ app.post("/register", function (req, res) {
 });
 
 app.get("/home", function (req, res) {
-	res.sendFile(__dirname + "/home/index.html");
+	//res.sendFile(__dirname + "/home/index.html");
+    con.connect(function(err) {
+        con.query("SELECT Subject,Content from notifs",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            const notifs = result;
+            //res.render('index', {notif1: result[0].Content, notif2: result[1].Content, sub1: result[0].Subject, sub2: result[1].Subject});
+            res.render('index',{ notifs});
+        });
+    });
 });
 
 app.post("/home", function (req, res) {
@@ -279,8 +291,6 @@ app.get("/admin", function (req, res){
     con.connect(function(err) {
         con.query("SELECT State, CropName, COUNT(*) AS cropNo FROM pin_details INNER JOIN farmer ON pin_details.Pincode = farmer.Pincode INNER JOIN land ON land.FID =  farmer.FID INNER JOIN land_cropname ON land.LID = land_cropname.LID GROUP BY State, CropName ORDER BY State, CropName;",function(err, result){
             if (err) throw err;
-            console.log("result");
-            console.log(result);
             var crops = ["Cotton", "Sunflower", "Paddy", "Ragi", "GroundNut", "Jowar", "Bajra", "Maize"];
             var andhra = {}, telangana = {}, andhralist = [], tellist = [];
             let buffer = "var cropsStatewise = [['CropType', ";
@@ -306,14 +316,10 @@ app.get("/admin", function (req, res){
                         var val = telangana[ele] === undefined ? 0 : telangana[ele];
                         tellist.push(val);
                     });
-                    console.log("andhra");
-                    console.log(andhra, andhralist, telangana, tellist);
-                    // console.log(andhralist);
                     buffer += "{ role: 'annotation' } ]," + '[' + "'Andhra Pradesh', ";
                     andhralist.forEach(function(ele){
                         buffer = buffer + String(ele) +", ";
                     });
-                    // buffer += "'']];"
                     buffer += "''], ['Telangana', ";
                     tellist.forEach(function(ele){
                         buffer = buffer + String(ele) +", ";
@@ -326,25 +332,44 @@ app.get("/admin", function (req, res){
             });
         });
     });
-    // con.connect(function(err) {
-    //     con.query("SELECT * FROM keyword_freq",function(err, result){
-    //         if (err) throw err;
-    //         console.log(result);
-    //         let buffer = 'var keyWord = [';
-    //         fs.open(path+'keyword.js', 'w+', function(err, fd){
-    //             if (err) console.log('cant open file');
-    //             else {
-    //                 result.forEach(function(ele){
-    //                     buffer = buffer + '{ x: ' + "'" + ele.keyword + "', value: '" + String(ele.freq) + "', category: '" + ele.topic + "' }, ";
-    //                 });
-    //                 buffer += '];'
-    //                 fs.write(fd, buffer, function (err, bytes) {
-    //                     if (err) console.log(err);
-    //                     else console.log("written");
-    //             });}
-    //         });
-    //     });
-    // });
+    con.connect(function(err) {
+        con.query("SELECT  map.Lat, map.Long, map.City, group_concat(crop.Name) as 'Crops' from crop_location, map, crop where Clocation = City and CIDL=CID group by map.City order by map.City",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = "var map = [['Lat', 'Long', 'Name'],";
+            fs.open(path+'map.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        // [37.4232, -122.0853, 'Work'],
+                        buffer = buffer + '[' + ele.Lat + ", " + ele.Long + ", '" + ele.City + " - " + ele.Crops + "'], ";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
+    con.connect(function(err) {
+        con.query("SELECT * FROM keyword_freq",function(err, result){
+            if (err) throw err;
+            let buffer = 'var keyWord = [';
+            fs.open(path+'keyword.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    result.forEach(function(ele){
+                        buffer = buffer + '{ x: ' + "'" + ele.keyword + "', value: '" + String(ele.freq) + "', category: '" + ele.topic + "' }, ";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
     res.sendFile(__dirname + "/admin/admin_analytics.html");
 });
 
@@ -376,6 +401,32 @@ app.get("/alerts", function (req, res){
     res.sendFile(__dirname + "/admin/send-alert.html");
 });
 
+app.post("/alerts", function (req, res) {
+    console.log(req.body);
+    con.connect(function(err) {
+        con.query("select SNo from notifs where SNo = (SELECT MAX(SNo) from notifs)", function(err, result){
+            if (err) throw err;
+            sno = result[0].SNo;
+            
+            con.query("Insert into "+"notifs"+"(SNo, Subject, Content) VALUES ('"+(sno+1)+"','"+req.body.subject+"','"+req.body.message+"')",function(err, result){
+                if (err) throw err;
+                alert("Successfully Sent Notification!");
+                console.log("1 record inserted into notifs");
+            });
+        });
+        
+        // con.query("INSERT into notifs(SNo, Subject, Content) VALUES("+(sno+1)+",'"+req.body.subject+"','"+req.body.message+"')",function(err, result){
+        //     if (err) throw err;
+        //     console.log(result);
+           
+        // });
+    });
+});
+
+
+
+
+
 // app.get("/keywords", function (req, res){
 //     var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
 //     con.connect(function(err) {
@@ -399,7 +450,7 @@ app.get("/alerts", function (req, res){
 //         });
 //     });
 //     res.sendFile(__dirname + "/admin/wordcloud.html");
-// });nod
+// });
 
 app.listen(port, function() {
 	console.log(`Hello world app listening on port ${port}!`);

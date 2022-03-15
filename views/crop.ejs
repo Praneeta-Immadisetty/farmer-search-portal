@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="crop.css" media="screen">
     <meta name="generator" content="Nicepage 3.22.0, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    
-    
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -36,7 +35,22 @@
     <meta name="theme-color" content="#81c132">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
+    <df-messenger
+      intent="WELCOME"
+      chat-title="farmer-portal"
+      chat-icon="https://i.postimg.cc/NFsJtsCP/robot.png""
+      agent-id="90afe7df-980d-4e9b-9622-d1bb39dbee64"
+      language-code="en"
+    ></df-messenger>
     <style>
+      df-messenger {
+      --df-messenger-bot-message: #878fac;
+      --df-messenger-button-titlebar-color: #42e72f;
+      --df-messenger-chat-background-color: rgb(212, 255, 173);
+      --df-messenger-font-color: white;
+      --df-messenger-send-icon: #878fac;
+      --df-messenger-user-message: #42e72f;
+      }
       .cotton {
         background-image: url("images/Cotton.jpg");
       }
