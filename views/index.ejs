@@ -42,11 +42,11 @@
     <style>
   df-messenger {
    --df-messenger-bot-message: #878fac;
-   --df-messenger-button-titlebar-color: #42e72f;
-   --df-messenger-chat-background-color: rgb(212, 255, 173);
+   --df-messenger-button-titlebar-color: rgba(0, 0, 0, 1);
+   --df-messenger-chat-background-color: white;
    --df-messenger-font-color: white;
    --df-messenger-send-icon: #878fac;
-   --df-messenger-user-message: #42e72f;
+   --df-messenger-user-message: #70ad47;
   }
 
 body {
@@ -265,7 +265,7 @@ a {
       <button class="button button2" onclick="schemes()">Custom Schemes</button>
       <div class="search-input">
         <a href="" target="_blank" hidden></a>
-        <form action="/home" method="post">
+        <form action="/home" method="post" autocomplete="off">
           <input type="text" id="keyword" name="keyword" placeholder="Enter Keywords...">
           <div class="autocom-box">
             <!-- here list are inserted from javascript -->

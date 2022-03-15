@@ -482,8 +482,10 @@ pre {
   margin-left: -15px; }
 
 .no-gutters {
-  
-  margin-left: 200px; }
+  margin-left: 230px; 
+  width: 1000px;
+  text-align: center;
+}
   .no-gutters > .col,
   .no-gutters > [class*="col-"] {
     padding-right: 0;
@@ -8217,9 +8219,12 @@ textarea.form-control {
 }
 
 .contact-wrap {
-  background: #272a34; }
+    background: #000;
+    opacity: 0.8;
+}
   .contact-wrap h3 {
     color: #fff; }
+
 
 .info-wrap {
   background: #1c1e25; }

@@ -49,56 +49,6 @@
     type="text/javascript"
     src="https://www.gstatic.com/charts/loader.js"
   ></script>
-  <script type="text/javascript" 
-      src="pie-chart.js">
-  </script>
-  <script type="text/javascript">
-    google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      let rows = [];
-      rows = crops;
-      console.log("hi");
-      console.log(rows);
-      var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Crop');
-        data.addColumn('number', 'Number of Farmers');
-        data.addRows(rows);
-
-      var options = {
-        title: "Farmer crop freq",
-        width: "689px",
-        height: "445px",
-      };
-
-      var chart = new google.visualization.PieChart(
-        document.getElementById("piechart")
-      );
-
-      chart.draw(data, options);
-    }
-  </script>
-  <script type="text/javascript" src="column-chart.js"></script>
-  <script type="text/javascript">
-    google.charts.load("current", {packages:['corechart', 'bar']});
-    google.charts.setOnLoadCallback(drawChartBar);
-    function drawChartBar() {
-      let rows = [];
-      rows = cropsStatewise;
-      console.log(rows);
-      var data = google.visualization.arrayToDataTable(rows);
-      var options = {
-        title: "Crops State-Andhra",
-        width: "689px",
-        height: "445px",
-        legend: { position: 'top', maxLines: 3 },
-        // bar: { groupWidth: '75%' },
-        isStacked: true,
-      };
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart"));
-      chart.draw(data, options);
-  }
-  </script>
   </head>
   <body class="u-body u-xl-mode">
     <header class="site-navbar site-navbar-target" role="banner">

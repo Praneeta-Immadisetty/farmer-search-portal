@@ -6,6 +6,17 @@
     <meta name="keywords" content="Maize">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="font-style.css">
+
+    <link rel="stylesheet" href="css/nav-owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/nav-bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/nav-style.css">
     <title>about2</title>
     <link rel="stylesheet" href="nicepageScheme.css" media="screen">
 <link rel="stylesheet" href="About2.css" media="screen">
@@ -24,8 +35,45 @@
     <meta name="theme-color" content="#81c132">
     <meta property="og:title" content="About2">
     <meta property="og:type" content="website">
+    <style>
+      .site-navbar{
+        z-index: 5;
+      }
+    </style>
   </head>
   <body class="u-body">
+    <header id="navbar" class="site-navbar site-navbar-target" role="banner" style="position: fixed; top: -112px;">
+
+      <div class="container">
+        <div class="row align-items-center position-relative">
+
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="#" class="font-weight-bold"><img src="favicon.png" width="80" height="80">Farmer Portal</a>
+            </div>
+          </div>
+
+          <div class="col-9  text-right">
+            
+
+            <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+
+
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                <li><a href="http://localhost:3000/home" class="nav-link">Home</a></li>
+                <li><a href="http://localhost:3000/crops" class="nav-link">Custom Crop Suggestions</a></li>
+                <li class="active"><a href="http://localhost:3000/schemes" class="nav-link">Custom Scheme Suggestions</a></li>
+                <li><a href="http://localhost:3000/" class="nav-link">Logout</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          
+        </div>
+      </div>
+
+    </header>
     <section class="u-align-center u-clearfix u-image u-section-1" id="sec-713b" data-image-width="1600" data-image-height="989">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-1">
@@ -46,4 +94,17 @@
       </div>
     </section>
   </body>
+  <script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+        document.getElementById("navbar").style.background = "rgba(0,0,0,0.7)";
+      } else {
+        document.getElementById("navbar").style.top = "-112px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+  </script>
 </html>

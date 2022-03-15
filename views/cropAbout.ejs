@@ -40,6 +40,9 @@
     <meta property="og:title" content="About">
     <meta property="og:type" content="website">
     <style>
+      .site-navbar{
+        z-index: 5;
+      }
       .cotton {
         background-image: url("images/Cotton.jpg");
       }
@@ -87,10 +90,9 @@
             <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
               <ul class="site-menu main-menu js-clone-nav ml-auto ">
                 <li><a href="http://localhost:3000/home" class="nav-link">Home</a></li>
-                <li><a href="http://localhost:3000/crops" class="nav-link">Custom Crop Suggestions</a></li>
+                <li class="active"><a href="http://localhost:3000/crops" class="nav-link">Custom Crop Suggestions</a></li>
                 <li><a href="http://localhost:3000/schemes" class="nav-link">Custom Scheme Suggestions</a></li>
-                <li><a href="http://localhost:3000/stats" class="nav-link">Alerts</a></li>
-                <li><a href="#" class="nav-link">Contact Us</a></li>
+                <li><a href="http://localhost:3000/" class="nav-link">Logout</a></li>
               </ul>
             </nav>
           </div>
