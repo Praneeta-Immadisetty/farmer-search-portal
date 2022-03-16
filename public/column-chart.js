@@ -1,1 +1,1 @@
-var cropsStatewise = [['CropType', 'Cotton', 'Sunflower', 'Paddy', 'Ragi', 'GroundNut', 'Jowar', 'Bajra', 'Maize', { role: 'annotation' } ],['Andhra Pradesh', 2, 1, 2, 1, 2, 1, 1, 0, ''], ['Telangana', 2, 1, 1, 0, 1, 0, 0, 1, '']];
+var cropsStatewise = [['CropType', 'Cotton', 'Sunflower', 'Paddy', 'Ragi', 'GroundNut', 'Jowar', 'Bajra', 'Maize', { role: 'annotation' } ],['Andhra Pradesh', 1, 1, 2, 0, 2, 1, 1, 0, ''], ['Telangana', 2, 1, 0, 2, 0, 1, 0, 1, '']];

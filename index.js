@@ -199,7 +199,7 @@ app.post("/home", function (req, res) {
 
 app.get("/crops", function (req, res) {
     con.connect(function(err) {
-        con.query("SELECT Name FROM crop INNER JOIN learns ON crop.CID = learns.CIDL WHERE learns.FID="+"'"+currentfid+"'",function(err, result){
+        con.query("SELECT distinct Name FROM crop INNER JOIN learns ON crop.CID = learns.CIDL WHERE learns.FID="+"'"+currentfid+"'",function(err, result){
             if (err) throw err;
             console.log(result);
             res.render('crop', {crop1: result[0].Name, crop2: result[1].Name, img1: result[0].Name, img2: result[1].Name});
@@ -268,7 +268,7 @@ app.get("/aboutscheme5", function (req, res) {
 });
 
 app.get("/admin", function (req, res){
-    var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
+    var path = 'C:/Users/akshi/Documents/CSE @ RV/V SEM/DBD/Lab/farmer-portal-upgrade/public/';
     con.connect(function(err) {
         con.query("SELECT CropName, count(*) AS Count FROM land_cropname WHERE LID in (SELECT LID FROM land, farmer WHERE land.FID = farmer.FID) GROUP BY CropName",function(err, result){
             if (err) throw err;
@@ -374,7 +374,7 @@ app.get("/admin", function (req, res){
 });
 
 app.get("/adminUserDetails", function (req, res){
-    var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
+    var path = 'C:/Users/akshi/Documents/CSE @ RV/V SEM/DBD/Lab/farmer-portal-upgrade/public/';
     con.connect(function(err) {
         con.query("SELECT Name, PhoneNumber, EmailID, City, State FROM farmer, pin_details WHERE farmer.Pincode = pin_details.Pincode",function(err, result){
             if (err) throw err;
@@ -425,32 +425,30 @@ app.post("/alerts", function (req, res) {
 
 
 
-
-
-// app.get("/keywords", function (req, res){
-//     var path = 'D:/5th sem/DBMS/PartB/farmerPortal_latest/public/';
-//     con.connect(function(err) {
-//         con.query("SELECT * FROM keyword_freq",function(err, result){
-//             if (err) throw err;
-//             console.log(result);
-//             let buffer = 'var keyWord = [';
-//             fs.open(path+'keyword.js', 'w+', function(err, fd){
-//                 if (err) console.log('cant open file');
-//                 else {
-//                     // { x: "Organic", value: 109, category: "Organic Farming" },
-//                     result.forEach(function(ele){
-//                         buffer = buffer + '{ x: ' + "'" + ele.keyword + "', value: '" + String(ele.freq) + "', category: '" + ele.topic + "' }, ";
-//                     });
-//                     buffer += '];'
-//                     fs.write(fd, buffer, function (err, bytes) {
-//                         if (err) console.log(err);
-//                         else console.log("written");
-//                 });}
-//             });
-//         });
-//     });
-//     res.sendFile(__dirname + "/admin/wordcloud.html");
-// });
+app.get("/keywords", function (req, res){
+    var path = 'C:/Users/akshi/Documents/CSE @ RV/V SEM/DBD/Lab/farmer-portal-upgrade/public/';
+    con.connect(function(err) {
+        con.query("SELECT * FROM keyword_freq",function(err, result){
+            if (err) throw err;
+            console.log(result);
+            let buffer = 'var keyWord = [';
+            fs.open(path+'keyword.js', 'w+', function(err, fd){
+                if (err) console.log('cant open file');
+                else {
+                    // { x: "Organic", value: 109, category: "Organic Farming" },
+                    result.forEach(function(ele){
+                        buffer = buffer + '{ x: ' + "'" + ele.keyword + "', value: '" + String(ele.freq) + "', category: '" + ele.topic + "' }, ";
+                    });
+                    buffer += '];'
+                    fs.write(fd, buffer, function (err, bytes) {
+                        if (err) console.log(err);
+                        else console.log("written");
+                });}
+            });
+        });
+    });
+    res.sendFile(__dirname + "/admin/wordcloud.html");
+});
 
 app.listen(port, function() {
 	console.log(`Hello world app listening on port ${port}!`);

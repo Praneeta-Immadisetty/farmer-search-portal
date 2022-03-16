@@ -1,1 +1,1 @@
-var crops = [['Cotton', 4],['Sunflower', 2],['Paddy', 3],['Ragi', 1],['GroundNut', 3],['Jowar', 1],['Bajra', 1],['Maize', 1],];
+var crops = [['Cotton', 3],['Sunflower', 2],['Paddy', 2],['GroundNut', 2],['Jowar', 2],['Bajra', 1],['Maize', 1],['Ragi', 2],];
